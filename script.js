@@ -2,9 +2,15 @@
 function pilihanCom() {
 	var com = Math.random();
 
-	if (com < 0.34) {
+	if (com < 0.2) {
 		return "semut";
-	} else if (com >= 0.34 && com < 0.67) {
+	} else if (com >= 0.21 && com < 0.3) {
+		return "orang";
+	} else if (com >= 0.31 && com < 0.4) {
+		return "gajah";
+	} else if (com >= 0.41 && com < 0.5) {
+		return "semut";
+	} else if (com >= 0.51 && com < 0.6) {
 		return "orang";
 	} else {
 		return "gajah";
