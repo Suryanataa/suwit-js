@@ -1,41 +1,104 @@
-let btn = document.getElementById("btn");
-btn.addEventListener("click", function () {
-	var tanya = true;
-	while (tanya) {
-		// menangkap pilihan player
-		var p = prompt("Pilih : Semut, Orang, Gajah");
+// fungsi pilihan komputer secara random
+function pilihanCom() {
+	var com = Math.random();
 
-		// menangkap pilihan komputer
-		// membangkitkan pilihan random
-		var com = Math.random();
-		console.log(com);
-
-		if (com < 0.34) {
-			com = "semut";
-		} else if (com >= 0.34 && com < 0.67) {
-			com = "orang";
-		} else {
-			com = "gajah";
-		}
-
-		var hasil = null;
-		// menentukan rules
-		if (p == com) {
-			hasil = "SERI!";
-		} else if (p == "semut") {
-			hasil = com == "orang" ? "KALAH!" : "MENANG!";
-		} else if (p == "orang") {
-			hasil = com == "gajah" ? "KALAH!" : "MENANG!";
-		} else if (p == "gajah") {
-			hasil = com == "semut" ? "KALAH!" : "MENANG!";
-		} else {
-			hasil = "Memasukan pilihan yang salah!";
-		}
-		// menampilkan hasil
-		alert("Kamu Memilih: " + p + "\nKomputer Memilih: " + com + "\nHasilnya: Kamu " + hasil);
-
-		var tanya = confirm("Apa Mau Main Lagi?");
+	if (com < 0.34) {
+		return "semut";
+	} else if (com >= 0.34 && com < 0.67) {
+		return "orang";
+	} else {
+		return "gajah";
 	}
+}
 
-	alert("TerimaKasih Sudah Bermain!");
+// fungsi untuk menentukan hasil
+function Gethasil(com, p) {
+	if (p == com) {
+		return "SERI!";
+	} else if (p == "semut") {
+		return com == "orang" ? "KALAH!" : "MENANG!";
+	} else if (p == "orang") {
+		return com == "gajah" ? "KALAH!" : "MENANG!";
+	} else if (p == "gajah") {
+		return com == "semut" ? "KALAH!" : "MENANG!";
+	} else {
+		return "Memasukan pilihan yang salah!";
+	}
+}
+
+function putar() {
+	const gambar = document.querySelector(".img-komputer");
+	const sGambar = ["semut", "orang", "gajah"];
+	let i = 0;
+	const waktu = new Date().getTime();
+
+	setInterval(() => {
+		if (new Date().getTime() - waktu > 1000) {
+			clearInterval;
+			return;
+		}
+		gambar.setAttribute("src", `./img/${sGambar[i++]}.png`);
+		if (i == sGambar.length) {
+			i = 0;
+		}
+	}, 100);
+}
+
+const pilihan = document.querySelectorAll("li img");
+pilihan.forEach(function (e) {
+	e.addEventListener("click", () => {
+		const info = document.querySelector(".info");
+		info.innerHTML = "";
+		const com = pilihanCom();
+		const player = e.className;
+		const hasil = Gethasil(com, player);
+
+		putar();
+
+		setTimeout(() => {
+			const gCom = document.querySelector(".img-komputer");
+			gCom.setAttribute("src", `./img/${com}.png`);
+
+			info.innerHTML = hasil;
+		}, 1000);
+	});
 });
+
+// const pGajah = document.querySelector(".gajah");
+// pGajah.addEventListener("click", () => {
+// 	const com = pilihanCom();
+// 	const player = pGajah.className;
+// 	const hasil = Gethasil(com, player);
+
+// 	const gCom = document.querySelector(".img-komputer");
+// 	gCom.setAttribute("src", `./img/${com}.png`);
+
+// 	const info = document.querySelector(".info");
+// 	info.innerHTML = hasil;
+// });
+
+// const pOrang = document.querySelector(".orang");
+// pOrang.addEventListener("click", () => {
+// 	const com = pilihanCom();
+// 	const player = pOrang.className;
+// 	const hasil = Gethasil(com, player);
+
+// 	const gCom = document.querySelector(".img-komputer");
+// 	gCom.setAttribute("src", `./img/${com}.png`);
+
+// 	const info = document.querySelector(".info");
+// 	info.innerHTML = hasil;
+// });
+
+// const pSemut = document.querySelector(".semut");
+// pSemut.addEventListener("click", () => {
+// 	const com = pilihanCom();
+// 	const player = pSemut.className;
+// 	const hasil = Gethasil(com, player);
+
+// 	const gCom = document.querySelector(".img-komputer");
+// 	gCom.setAttribute("src", `./img/${com}.png`);
+
+// 	const info = document.querySelector(".info");
+// 	info.innerHTML = hasil;
+// });

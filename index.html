@@ -4,33 +4,30 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>SUWIT</title>
-		<style>
-			* {
-				padding: 0;
-				margin: 0;
-			}
-			.container {
-				margin: 50px auto;
-
-				width: 300px;
-				height: 300px;
-			}
-			.btn {
-				background-color: rgb(0, 28, 155);
-				padding: 50px 100px;
-				border-radius: 18%;
-				color: white;
-			}
-			.btn:hover {
-				box-shadow: 10px 10px 30px rgb(114, 173, 250);
-				background-color: rgb(0, 38, 206);
-			}
-		</style>
+		<title>Game Suwit</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
+		<h1>Suwit Jawa v2.0</h1>
+
 		<div class="container">
-			<button id="btn" class="btn"><h1>MAIN</h1></button>
+			<div class="area-komputer">
+				<img src="img/gajah.png" class="img-komputer" />
+			</div>
+			<div class="info"></div>
+			<div class="area-player">
+				<ul>
+					<li>
+						<img src="img/gajah.png" class="gajah" />
+					</li>
+					<li>
+						<img src="img/orang.png" class="orang" />
+					</li>
+					<li>
+						<img src="img/semut.png" class="semut" />
+					</li>
+				</ul>
+			</div>
 		</div>
 
 		<script src="script.js"></script>
